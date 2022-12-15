@@ -1,0 +1,10 @@
+.button {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid #fff;
+}
+
+.button:hover {
+    opacity: 0.6;
+}

@@ -1,0 +1,38 @@
+.profile__info_details {
+    margin: 0;
+    font-style: normal;
+    font-weight: 400;
+
+}
+
+@media screen and (min-width: 320px) {
+    .profile__info_details {
+        align-self: center;
+        width: 282px;
+        min-height: 14px;
+        font-size: 14px;
+        line-height: 17px;
+        text-align: center;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .profile__info_details {
+        margin: 12px 0 0 0;
+        width: 200px;
+        min-height: 18px;
+        font-size: 15px;
+        line-height: 18px;
+        text-align: left;
+        align-self: flex-start;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .profile__info_details {
+        width: 294px;
+        min-height: 18px;
+        font-size: 18px;
+        line-height: 22px;
+    }
+}
