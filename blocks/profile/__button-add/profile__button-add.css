@@ -1,4 +1,4 @@
-.button__add {
+.profile__button-add {
     display: flex;
     justify-self: flex-end;
     align-self: center;
@@ -10,7 +10,7 @@
 }
 
 @media screen and (min-width: 320px) {
-    .button__add {
+    .profile__button-add {
         justify-self: center;
         align-self: center;
         height: 50px;
@@ -19,16 +19,14 @@
 }
 
 @media screen and (min-width: 768px) {
-    .button__add {
-        align-self: center;
+    .profile__button-add {
         height: 30px;
         width: 120px;
     }
 }
 
 @media screen and (min-width: 1024px) {
-    .button__add {
-        align-self: center;
+    .profile__button-add {
         height: 50px;
         width: 150px;
     }

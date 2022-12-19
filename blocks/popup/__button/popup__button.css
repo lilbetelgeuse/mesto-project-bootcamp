@@ -17,7 +17,7 @@
   .popup__button {
     width: 238px;
     height: 46px;
-    margin-top: 14px;
+    margin: 14px 22px 25px 22px;
   }
 }
 
@@ -25,6 +25,6 @@
   .popup__button {
     width: 358px;
     height: 50px;
-    margin-top: 15px;
+    margin: 15px 36px 37px 36px;
   }
 }

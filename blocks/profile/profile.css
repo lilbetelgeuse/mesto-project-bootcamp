@@ -25,7 +25,6 @@
 @media screen and (min-width: 1024px) {
     .profile {
         max-width: 880px;
-        width: 100%;
         grid-template-rows: repeat(1, 127px);
         grid-template-columns: 127px 1fr auto;
         justify-content: left;

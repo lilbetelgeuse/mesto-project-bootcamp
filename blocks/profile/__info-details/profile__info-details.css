@@ -1,4 +1,4 @@
-.profile__info_details {
+.profile__info-details {
     margin: 0;
     font-style: normal;
     font-weight: 400;
@@ -9,7 +9,7 @@
 }
 
 @media screen and (min-width: 320px) {
-    .profile__info_details {
+    .profile__info-details {
         align-self: center;
         width: 282px;
         min-height: 14px;
@@ -20,7 +20,7 @@
 }
 
 @media screen and (min-width: 768px) {
-    .profile__info_details {
+    .profile__info-details {
         margin: 12px 0 0 0;
         width: 200px;
         min-height: 18px;
@@ -32,7 +32,7 @@
 }
 
 @media screen and (min-width: 1024px) {
-    .profile__info_details {
+    .profile__info-details {
         width: 294px;
         min-height: 18px;
         font-size: 18px;
