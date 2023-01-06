@@ -12,18 +12,32 @@
 </head>
 
 <body class="page">
-    <section class="popup popup_opened">
+    <section class="popup popup__edit-profile">
         <div class="popup__container">
-            <button class="button popup__toggle" type="button"><img src="./images/Close.svg" alt="Закрыть"></button>
+            <button class="button popup__toggle popup__edit-toggle" type="button"><img src="./images/Close.svg" alt="Закрыть"></button>
             <h2 class="popup__heading">Редактировать профиль</h2>
             <form class="form" method="get" name="profile-form">
-                <input class="popup__item" type="text" id="name" name="name" placeholder="Жак-Ив Кусто">
+                <input class="popup__item" type="text" id="name" name="name" placeholder="Жак-Ив Кусто" required>
                 <input class="popup__item" type="text" id="description" name="description"
                     placeholder="Исследователь океана">
-                <input type="submit" value="Сохранить" class="button popup__button">
+                <input type="button" value="Сохранить" id="submit_profileInfo" class="button popup__button">
             </form>
         </div>
     </section>
+
+    <section class="popup popup__add-element">
+        <div class="popup__container">
+            <button class="button popup__toggle popup__add-toggle" type="button"><img src="./images/Close.svg" alt="Закрыть"></button>
+            <h2 class="popup__heading">Новое место</h2>
+            <form class="form" method="get" name="element-add-form">
+                <input class="popup__item" type="text" id="element-name" name="element-name" placeholder="Название" required>
+                <input class="popup__item" type="text" id="picture-link" name="picture-link"
+                    placeholder="Ссылка на картинку">
+                <input type="button" value="Создать" id="submit-new-element" class="button popup__button">
+            </form>
+        </div>
+    </section>
+
     <header class="header">
         <div class="header__logo">
         </div>
@@ -45,7 +59,7 @@
 
         <section class="elements">
             <ul class="elements__list">
-                <li class="element">
+                <!--<li class="element">
                     <img class="element__image" src="./images/kirill-pershin-1088404-unsplash-1.jpg" alt="Карачаевск">
                     <div class="element__description">
                         <h2 class="element__header">Карачаевск</h2>
@@ -91,7 +105,7 @@
                         <h2 class="element__header">Карачаевск</h2>
                         <button type="button" class="element__like"></button>
                     </div>
-                </li>
+                </li>-->
             </ul>
         </section>
         <!--Конец секции elements-->
@@ -103,6 +117,18 @@
     <footer class="footer">
         <p class="footer__copyright">&#169; 2020 Mesto Russia</p>
     </footer>
+
+    <template class="element__template">
+        <li class="element">
+            <img class="element__image" src="" alt="">
+            <div class="element__description">
+                <h2 class="element__header"></h2>
+                <button type="button" class="element__like"></button>
+            </div>
+        </li>
+
+    </template>
+    <script src="./pages/index.js"></script>
 </body>
 
 </html>
