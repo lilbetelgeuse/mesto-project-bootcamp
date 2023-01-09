@@ -1,6 +1,8 @@
 .element__image {
+    margin-top: -40px;
     width: 282px;
     height: 282px;
     object-fit: cover;
+    z-index: 0;
     
 }

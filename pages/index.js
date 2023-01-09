@@ -6,6 +6,8 @@ const popupEditProfile = document.querySelector('.popup__edit-profile');
 const popupAddElement = document.querySelector('.popup__add-element');
 const saveProfileButton = document.getElementById('submit_profileInfo');
 const saveNewElementButton = document.getElementById('submit-new-element');
+const trashButton = document.querySelector('.element__trash button');
+
 
 function popup(element) {
   element.classList.toggle('popup_opened');
@@ -20,6 +22,7 @@ addCloseButton.addEventListener('click', () => popup(popupAddElement));
 saveProfileButton.addEventListener('click', () => popup(popupEditProfile));
 saveNewElementButton.addEventListener('click', () => popup(popupAddElement));
 
+
 let profileName = document.querySelector('.profile__info-name');
 let profileJob = document.querySelector('.profile__info-details');
 
@@ -30,7 +33,7 @@ function editName() {
   profileName.textContent = inputName;
   profileJob.textContent = inputJob;
   //тут была функция closePopup, которую выкинули к черту, надеюсь, оно будет работать без этого
-  
+
 
 }
 
@@ -79,6 +82,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
     cardElement.querySelector('.element__like').addEventListener('click', function (evt) {
       evt.target.classList.toggle('element__like_active');
     });
+    //дописать в событие, чтобы из элемент.листа удалялся элемент
+    cardElement.querySelector('.element__trash').addEventListener('click', (evt) => evt.target.parentNode.remove()); 
 
     cardsList.append(cardElement);
 
@@ -101,11 +106,15 @@ function addNewElement() {
   cardElement.querySelector('.element__like').addEventListener('click', function (evt) {
     evt.target.classList.toggle('element__like_active');
   });
+
   //cardsList.append(cardElement);
   cardsList.insertBefore(cardElement, cardsList.children[0]);
 }
 
 saveNewElementButton.addEventListener('click', addNewElement);
+
+//ниже надо написать код, который будет удалять элемент по клику на кнопку удаления
+
 
 /*$(document).ready(function () {
     $('profile__button-edit').click(function () {

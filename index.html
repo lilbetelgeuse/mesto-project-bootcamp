@@ -14,7 +14,8 @@
 <body class="page">
     <section class="popup popup__edit-profile">
         <div class="popup__container">
-            <button class="button popup__toggle popup__edit-toggle" type="button"><img src="./images/Close.svg" alt="Закрыть"></button>
+            <button class="button popup__toggle popup__edit-toggle" type="button"><img src="./images/Close.svg"
+                    alt="Закрыть"></button>
             <h2 class="popup__heading">Редактировать профиль</h2>
             <form class="form" method="get" name="profile-form">
                 <input class="popup__item" type="text" id="name" name="name" placeholder="Жак-Ив Кусто" required>
@@ -27,10 +28,12 @@
 
     <section class="popup popup__add-element">
         <div class="popup__container">
-            <button class="button popup__toggle popup__add-toggle" type="button"><img src="./images/Close.svg" alt="Закрыть"></button>
+            <button class="button popup__toggle popup__add-toggle" type="button"><img src="./images/Close.svg"
+                    alt="Закрыть"></button>
             <h2 class="popup__heading">Новое место</h2>
             <form class="form" method="get" name="element-add-form">
-                <input class="popup__item" type="text" id="element-name" name="element-name" placeholder="Название" required>
+                <input class="popup__item" type="text" id="element-name" name="element-name" placeholder="Название"
+                    required>
                 <input class="popup__item" type="text" id="picture-link" name="picture-link"
                     placeholder="Ссылка на картинку">
                 <input type="button" value="Создать" id="submit-new-element" class="button popup__button">
@@ -120,6 +123,7 @@
 
     <template class="element__template">
         <li class="element">
+            <button type='button' class="element__trash button"></button>
             <img class="element__image" src="" alt="">
             <div class="element__description">
                 <h2 class="element__header"></h2>
