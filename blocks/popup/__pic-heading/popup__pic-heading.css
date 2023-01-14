@@ -1,0 +1,10 @@
+.popup__pic-heading {
+    align-self: flex-start;
+    border: none;
+    margin-bottom: -40px ;
+    padding: 0;
+    color: white;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+}

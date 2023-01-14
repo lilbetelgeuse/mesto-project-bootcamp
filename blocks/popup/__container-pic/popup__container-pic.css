@@ -1,0 +1,10 @@
+.popup__container-pic {
+    display: flex;
+    flex-direction: column;
+    background: transparent;
+    border-radius: 0px;
+    box-sizing: border-box;
+    align-items: center;
+    object-fit: cover;
+}
+

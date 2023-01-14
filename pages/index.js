@@ -1,24 +1,28 @@
 const editButton = document.querySelector('.profile__button-edit');
 const addCloseButton = document.querySelector('.popup__add-toggle');
 const editCloseButton = document.querySelector('.popup__edit-toggle');
+const picCloseButton = document.querySelector('.popup__pic-toggle');
 const addButton = document.querySelector('.profile__button-add');
 const popupEditProfile = document.querySelector('.popup__edit-profile');
 const popupAddElement = document.querySelector('.popup__add-element');
+const popupLargePic = document.querySelector('.popup__large-pic');
 const saveProfileButton = document.getElementById('submit_profileInfo');
 const saveNewElementButton = document.getElementById('submit-new-element');
 const trashButton = document.querySelector('.element__trash button');
+
 
 
 function popup(element) {
   element.classList.toggle('popup_opened');
 }
 
-editButton.addEventListener('click', () => popup(popupEditProfile));//как здесь понять, какой из попапов открыать?
-
+editButton.addEventListener('click', () => popup(popupEditProfile));
 editCloseButton.addEventListener('click', () => popup(popupEditProfile));
 
 addButton.addEventListener('click', () => popup(popupAddElement));
 addCloseButton.addEventListener('click', () => popup(popupAddElement));
+
+picCloseButton.addEventListener('click', () => popup(popupLargePic));
 saveProfileButton.addEventListener('click', () => popup(popupEditProfile));
 saveNewElementButton.addEventListener('click', () => popup(popupAddElement));
 
@@ -32,8 +36,7 @@ function editName() {
   let inputJob = document.getElementById('description').value;
   profileName.textContent = inputName;
   profileJob.textContent = inputJob;
-  //тут была функция closePopup, которую выкинули к черту, надеюсь, оно будет работать без этого
-
+  
 
 }
 
@@ -71,54 +74,48 @@ const initialCards = [
 //теперь добавляем код, который добавит массив в разметку страницы для выданного темплейта
 window.addEventListener('DOMContentLoaded', (event) => {
 
-  const cardTemplate = document.querySelector('.element__template');
-  const cardsList = document.querySelector('.elements__list');
-
-  initialCards.forEach(function (element) {
-    const cardElement = cardTemplate.content.cloneNode(true);
-
-    cardElement.querySelector('.element__image').src = element.link;
-    cardElement.querySelector('.element__header').textContent = element.name;
-    cardElement.querySelector('.element__like').addEventListener('click', function (evt) {
-      evt.target.classList.toggle('element__like_active');
-    });
-    //дописать в событие, чтобы из элемент.листа удалялся элемент
-    cardElement.querySelector('.element__trash').addEventListener('click', (evt) => evt.target.parentNode.remove()); 
-
-    cardsList.append(cardElement);
-
-  })
+  initialCards.reverse().forEach((element) => addNewElement(element));
 
 });
 
+function lightBox(container, imageUrl, caption) {
+  container.querySelector('.popup__pic').src = imageUrl;
+  container.querySelector('.popup__pic-heading').textContent = caption;
+  popup(container);
+
+
+}
+
 //ниже - добавление новой карточки
 
-const cardsList = document.querySelector('.elements__list');
-const cardTemplate = document.querySelector('.element__template');
 
-function addNewElement() {
-  let inputHeader = document.getElementById('element-name').value;
-  let inputPic = document.getElementById('picture-link').value;
-
+//
+function addNewElement(element) {
+  const cardsList = document.querySelector('.elements__list');
+  const cardTemplate = document.querySelector('.element__template');
   const cardElement = cardTemplate.content.cloneNode(true);
-  cardElement.querySelector('.element__header').textContent = inputHeader;
-  cardElement.querySelector('.element__image').src = inputPic;
+  const elementPic = cardElement.querySelector('.element__image');
+
+
+  elementPic.src = element.link;
+  elementPic.addEventListener('click', () => lightBox(popupLargePic, element.link, element.name));
+
+  cardElement.querySelector('.element__header').textContent = element.name;
   cardElement.querySelector('.element__like').addEventListener('click', function (evt) {
     evt.target.classList.toggle('element__like_active');
   });
-
-  //cardsList.append(cardElement);
-  cardsList.insertBefore(cardElement, cardsList.children[0]);
+  cardElement.querySelector('.element__trash').addEventListener('click', (evt) => evt.target.parentNode.remove());
+  
+  cardsList.insertBefore(cardElement, cardsList.firstChild);
+  //
 }
 
-saveNewElementButton.addEventListener('click', addNewElement);
+saveNewElementButton.addEventListener('click', function () {
+  const element = {};
+  element.link = document.getElementById('picture-link').value;
+  element.name = document.getElementById('element-name').value;
+  addNewElement(element);
+});
 
-//ниже надо написать код, который будет удалять элемент по клику на кнопку удаления
 
-
-/*$(document).ready(function () {
-    $('profile__button-edit').click(function () {
-        $('popup').addClass("popup_opened");
-    });
-});*/
 

@@ -29,12 +29,18 @@
 /*popup*/
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
+@import url(../blocks/popup/__large-pic/popup__large-pic.css);
+@import url(../blocks/popup/__close-button/popup__close-button.css);
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/form/form.css);
 @import url(../blocks/popup/__heading/popup__heading.css);
 @import url(../blocks/popup/__toggle/popup__toggle.css);
+@import url(../blocks/popup/__pic-toggle/popup__pic-toggle.css);
 @import url(../blocks/popup/__item/popup__item.css);
 @import url(../blocks/popup/__button/popup__button.css);
+@import url(../blocks/popup/__container-pic/popup__container-pic.css);
+@import url(../blocks/popup/__pic/popup__pic.css);
+@import url(../blocks/popup/__pic-heading/popup__pic-heading.css);
 
 /*footer*/
 @import url(../blocks/footer/footer.css);

@@ -15,7 +15,7 @@
     <section class="popup popup__edit-profile">
         <div class="popup__container">
             <button class="button popup__toggle popup__edit-toggle" type="button"><img src="./images/Close.svg"
-                    alt="Закрыть"></button>
+                class='popup__close-button' alt="Закрыть"></button>
             <h2 class="popup__heading">Редактировать профиль</h2>
             <form class="form" method="get" name="profile-form">
                 <input class="popup__item" type="text" id="name" name="name" placeholder="Жак-Ив Кусто" required>
@@ -29,7 +29,7 @@
     <section class="popup popup__add-element">
         <div class="popup__container">
             <button class="button popup__toggle popup__add-toggle" type="button"><img src="./images/Close.svg"
-                    alt="Закрыть"></button>
+                class='popup__close-button' alt="Закрыть"></button>
             <h2 class="popup__heading">Новое место</h2>
             <form class="form" method="get" name="element-add-form">
                 <input class="popup__item" type="text" id="element-name" name="element-name" placeholder="Название"
@@ -38,6 +38,15 @@
                     placeholder="Ссылка на картинку">
                 <input type="button" value="Создать" id="submit-new-element" class="button popup__button">
             </form>
+        </div>
+    </section>
+
+    <section class="popup popup__large-pic">
+        <div class="popup__container-pic">
+            <button class="button popup__pic-toggle" type="button"><img class='popup__close-button' src="./images/Close.svg"
+                    alt="Закрыть"></button>
+            <img src="" alt="" class="popup__pic">
+            <h2 class="popup__pic-heading"></h2>
         </div>
     </section>
 
