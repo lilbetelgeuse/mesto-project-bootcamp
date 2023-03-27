@@ -13,10 +13,10 @@ const toggleButtonState = (config, inputList, buttonElement) => {
   // Если есть хотя бы один невалидный инпут
   if (hasInvalidInput(inputList)) {
     // сделай кнопку неактивной
-    buttonElement.classList.add(config.inactiveButtonClass);
+      buttonElement.disabled = true;
   } else {
     // иначе сделай кнопку активной
-    buttonElement.classList.remove(config.inactiveButtonClass);
+    buttonElement.disabled = false;
   }
 };
 
@@ -54,7 +54,7 @@ const setEventListeners = (config, formElement) => {
   const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
 
   const buttonElement = formElement.querySelector('.popup__button');
-
+ 
   toggleButtonState(config, inputList, buttonElement);
 
   // Обойдём все элементы полученной коллекции

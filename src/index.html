@@ -18,7 +18,7 @@
                 class='popup__edit-close-button popup__close-button' alt="Закрыть">
             </button>
             <h2 class="popup__heading">Редактировать профиль</h2>
-            <form class="popup__form" method="get" name="profile-form" novalidate>
+            <form id="profile-form" class="popup__form" method="get" name="profile-form" novalidate>
               <label class="popup__item">
                 <input class="popup__item-input" type="text" id="element-profile-name" name="name" placeholder="Жак-Ив Кусто"
                        required minlength="2" maxlength="40"/>
@@ -29,7 +29,7 @@
                     placeholder="Исследователь океана" required minlength="2" maxlength="40"/>
                 <span class="element-profile-description-error popup__item-error"></span>
               </label>
-              <input type="button" value="Сохранить" id="submit_profileInfo" class="button popup__button popup__close-button"/>
+              <input type="submit" value="Сохранить" id="submit_profileInfo" class="button popup__button popup__close-button"/>
             </form>
         </div>
     </section>
@@ -41,7 +41,7 @@
                 class='popup__close-button popup__add-close-button' alt="Закрыть">
             </button>
             <h2 class="popup__heading">Новое место</h2>
-            <form class="popup__form" method="get" name="element-add-form">
+            <form id="element-add-form" class="popup__form" method="get" name="element-add-form">
                 <label class="popup__item">
                   <input id="element-name"  class="popup__item-input" type="text" name="element-name" placeholder="Название"
                     required minlength="2" maxlength="30"/>
@@ -53,7 +53,7 @@
                     placeholder="Ссылка на картинку" required>
                   <span class="picture-link-error popup__item-error"></span>
                 </label>
-                <input type="button" value="Создать" id="submit-new-element" class="button popup__button popup__close-button">
+                <input type="submit" value="Создать" id="submit-new-element" class="button popup__button popup__close-button">
             </form>
         </div>
     </section>
@@ -89,53 +89,7 @@
 
         <section class="elements">
             <ul class="elements__list">
-                <!--<li class="element">
-                    <img class="element__image" src="./images/kirill-pershin-1088404-unsplash-1.jpg" alt="Карачаевск">
-                    <div class="element__description">
-                        <h2 class="element__header">Карачаевск</h2>
-                        <button type="button" class="element__like"></button>
-                    </div>
-                </li>
-
-                <li class="element">
-                    <img class="element__image" src="./images/kirill-pershin-1404681-unsplash.jpg" alt="Эльбрус">
-                    <div class="element__description">
-                        <h2 class="element__header">Гора Эльбрус</h2>
-                        <button type="button" class="element__like"></button>
-                    </div>
-                </li>
-
-                <li class="element">
-                    <img class="element__image" src="./images/kirill-pershin-1556355-unsplash.jpg" alt="Домбай">
-                    <div class="element__description">
-                        <h2 class="element__header">Домбай</h2>
-                        <button type="button" class="element__like"></button>
-                    </div>
-                </li>
-
-                <li class="element">
-                    <img class="element__image" src="./images/kirill-pershin-1404681-unsplash.jpg" alt="Эльбрус">
-                    <div class="element__description">
-                        <h2 class="element__header">Гора Эльбрус</h2>
-                        <button type="button" class="element__like"></button>
-                    </div>
-                </li>
-
-                <li class="element">
-                    <img class="element__image" src="./images/kirill-pershin-1556355-unsplash.jpg" alt="Домбай">
-                    <div class="element__description">
-                        <h2 class="element__header">Домбай</h2>
-                        <button type="button" class="element__like"></button>
-                    </div>
-                </li>
-
-                <li class="element">
-                    <img class="element__image" src="./images/kirill-pershin-1088404-unsplash-1.jpg" alt="Карачаевск">
-                    <div class="element__description">
-                        <h2 class="element__header">Карачаевск</h2>
-                        <button type="button" class="element__like"></button>
-                    </div>
-                </li>-->
+                
             </ul>
         </section>
         <!--Конец секции elements-->

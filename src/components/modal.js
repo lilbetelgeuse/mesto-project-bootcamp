@@ -1,7 +1,12 @@
 const all_popups = Array.from(document.querySelectorAll('.popup'));
-
+/*https://www.macmillandictionary.com/dictionary/british/pop-up_1
+"Pop up" (phrasal verb, intransitive)
+DEFINITIONS:
+    to appear very quickly or suddenly
+    "The daffodils and tulips are popping up everywhere."*/ 
 function popup(event, clicked, element) {
-  // console.log(event.target);
+  
+  //console.log(event.target);
   // console.log(clicked);
   // console.log(event.target.id + " : " + clicked.id);
   if (!clicked.id || event.target.id !== clicked.id) {

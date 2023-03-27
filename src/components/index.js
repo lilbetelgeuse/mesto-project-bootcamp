@@ -8,20 +8,22 @@ const initProfile = () => {
   const popupEditProfile = document.querySelector('.popup__edit-profile');
   const profileName = document.querySelector('.profile__info-name');
   const profileJob = document.querySelector('.profile__info-details');
-  const saveProfileButton = document.getElementById('submit_profileInfo');
+  const editProfileForm = document.querySelector('#profile-form');
+  
+  editProfileForm.addEventListener('submit', function (evt) {
+    evt.preventDefault();
+    const form = evt.target;
+    const element = {};
+    profileName.textContent = form.elements['element-profile-name'].value;
+    profileJob.textContent = form.elements['element-profile-description'].value;
+    
+  });
 
-  function editName() {
-    const inputName = document.getElementById('element-profile-name').value;
-    const inputJob = document.getElementById('element-profile-description').value;
-    profileName.textContent = inputName;
-    profileJob.textContent = inputJob;
-  }
   definePopup(popupEditProfile, editButton);
-  saveProfileButton.addEventListener('click', editName);
 
 }
 
-let initPage = function () {
+const initPage = function () {
   initCards();
   initModal();
   initProfile();
