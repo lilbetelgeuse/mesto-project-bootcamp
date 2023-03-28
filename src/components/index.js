@@ -1,7 +1,6 @@
 import '../components/validation.js'
 import {initCards} from './card'
 import {definePopupTrigger, initModal} from './modal'
-import {getProfile} from '../components/api.js';
 
 
 const initProfile = () => {
@@ -9,10 +8,7 @@ const initProfile = () => {
   const profileName = document.querySelector('.profile__info-name');
   const profileJob = document.querySelector('.profile__info-details');
   const editProfileForm = document.querySelector('#profile-form');
-  getProfile()
-  .then((result) => {
-
-  })
+  
 
   editProfileForm.addEventListener('submit', function (evt) {
     evt.preventDefault();

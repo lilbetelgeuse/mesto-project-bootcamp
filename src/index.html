@@ -11,6 +11,24 @@
 </head>
 
 <body class="page">
+    <section id="popup__edit-avatar" class="popup popup__edit-avatar popup__edit-avatar-trigger popup__trigger">
+        <div class="popup__container">
+            <button class="button popup__toggle popup__edit-toggle" type="button">
+              <img id="popup__edit-close-button" src="<%=require('./images/Close.svg')%>"
+                class='popup__edit-close-button popup__close-button popup__edit-avatar-trigger popup__trigger' alt="Закрыть">
+            </button>
+            <h2 class="popup__heading">Обновить аватар</h2>
+            <form id="profile-avatar" class="popup__form" method="get" name="profile-avatar" novalidate>
+              <label class="popup__item">
+                <input class="popup__item-input" type="text" id="element-avatar" name="element-avatar"
+                       required minlength="8" maxlength="400"/>
+                <span class="element-profile-name-error popup__item-error"></span>
+              </label>
+                <input type="submit" value="Сохранить" id="submit_avatar"
+                     class="button popup__button popup__close-button"/>
+            </form>
+        </div>
+    </section>
     <section id="popup__edit-profile" class="popup popup__edit-profile popup__edit-profile-trigger popup__trigger">
         <div class="popup__container">
             <button class="button popup__toggle popup__edit-toggle" type="button">
@@ -78,7 +96,10 @@
 
     <main class="content">
         <section class="profile">
-            <img src="<%=require('./images/image.jpg')%>" class="profile__image" alt="Картинка профиля">
+            <!--<div class="profile__image">-->
+                <button type="button" class="popup__edit-avatar-trigger popup__trigger profile__image"></button>
+                <!--<div class="profile__image_overlay"></div>-->
+            
             <div class="profile__info">
                 <div class="profile__edit">
                     <h1 class="profile__info-name">Жак-Ив Кусто</h1>
