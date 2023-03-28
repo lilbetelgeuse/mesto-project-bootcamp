@@ -1,45 +1,55 @@
 const all_popups = Array.from(document.querySelectorAll('.popup'));
-/*https://www.macmillandictionary.com/dictionary/british/pop-up_1
-"Pop up" (phrasal verb, intransitive)
-DEFINITIONS:
-    to appear very quickly or suddenly
-    "The daffodils and tulips are popping up everywhere."*/ 
-function popup(event, clicked, element) {
-  
-  //console.log(event.target);
-  // console.log(clicked);
-  // console.log(event.target.id + " : " + clicked.id);
-  if (!clicked.id || event.target.id !== clicked.id) {
-    return false;
-  }
+
+/**
+ * 1. Единая функция для обработки попапов - открывает закрытые, закрывает открытые
+ *
+ * 2. https://www.macmillandictionary.com/dictionary/british/pop-up_1
+ * "Pop up" (phrasal verb, intransitive)
+ * DEFINITIONS:
+ *     to appear very quickly or suddenly
+ *     "The daffodils and tulips are popping up everywhere."
+ */
+function popup(element) {
   element.classList.toggle('popup_opened');
+  if (element.classList.contains('popup_opened')) {
+    document.addEventListener('keydown', handleKeyDownEvent)
+  } else {
+    document.removeEventListener('keydown', handleKeyDownEvent)
+  }
 }
 
-function definePopup(popupElement, triggers) {
-  if (!triggers) {
-    triggers = [];
+function handleKeyDownEvent(event) {
+  if (event.key === 'Escape') {
+    const element = document.querySelector('.popup_opened');
+    popup(element);
   }
-  if (!Array.isArray(triggers)) {
-    triggers = [triggers];
+}
+
+function handleTriggerEvent(event, element) {
+  event.stopPropagation();
+  if (!event.target.classList.contains('popup__trigger')) {
+    return false;
   }
-  popupElement.addEventListener('click', (e) => popup(e, popupElement, popupElement));
-  const closeButtons = Array.from(popupElement.querySelectorAll('.popup__close-button'));
-  triggers.push(...closeButtons);
-  triggers.forEach((triggerElement) => {
-    triggerElement.addEventListener('click', (e) => popup(e, triggerElement, popupElement));
-  });
+  popup(element);
+}
+
+function definePopupTrigger(popupElement, triggerElement, eventType) {
+  triggerElement.classList.add('popup__trigger');
+  triggerElement.addEventListener(eventType, (e) => handleTriggerEvent(e, popupElement))
 }
 
 function initModal() {
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') {
-      all_popups.forEach((popup) => {
-        popup.classList.remove('popup_opened');
-      })
-    }
-  })
+  const popupList = Array.from(document.querySelectorAll('.popup'));
+  const popupTriggerList = Array.from(document.querySelectorAll('.popup__trigger'));
+
+  popupList.forEach((popupElement) => {
+    popupTriggerList.forEach((triggerElement) => {
+      if (triggerElement.classList.contains(`${popupElement.id}-trigger`)) {
+        triggerElement.addEventListener('mousedown', (e) => handleTriggerEvent(e, popupElement))
+      }
+    });
+  });
 }
 
 export {initModal}
-export {definePopup}
-export {popup}
+export {definePopupTrigger}

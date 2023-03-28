@@ -11,11 +11,11 @@
 </head>
 
 <body class="page">
-    <section id="popup__edit-profile" class="popup popup__edit-profile">
+    <section id="popup__edit-profile" class="popup popup__edit-profile popup__edit-profile-trigger popup__trigger">
         <div class="popup__container">
             <button class="button popup__toggle popup__edit-toggle" type="button">
               <img id="popup__edit-close-button" src="<%=require('./images/Close.svg')%>"
-                class='popup__edit-close-button popup__close-button' alt="Закрыть">
+                class='popup__edit-close-button popup__close-button popup__edit-profile-trigger popup__trigger' alt="Закрыть">
             </button>
             <h2 class="popup__heading">Редактировать профиль</h2>
             <form id="profile-form" class="popup__form" method="get" name="profile-form" novalidate>
@@ -29,16 +29,17 @@
                     placeholder="Исследователь океана" required minlength="2" maxlength="40"/>
                 <span class="element-profile-description-error popup__item-error"></span>
               </label>
-              <input type="submit" value="Сохранить" id="submit_profileInfo" class="button popup__button popup__close-button"/>
+              <input type="submit" value="Сохранить" id="submit_profileInfo"
+                     class="button popup__button popup__close-button"/>
             </form>
         </div>
     </section>
 
-    <section id="popup__add-element" class="popup popup__add-element">
+    <section id="popup__add-element" class="popup popup__add-element popup__add-element-trigger popup__trigger">
         <div class="popup__container">
-            <button class="button popup__toggle popup__add-toggle" type="button">
+            <button class="button popup__toggle" type="button">
               <img id="popup__add-close-button" src="<%=require('./images/Close.svg')%>"
-                class='popup__close-button popup__add-close-button' alt="Закрыть">
+                class='popup__close-button popup__add-close-button popup__add-element-trigger popup__trigger' alt="Закрыть">
             </button>
             <h2 class="popup__heading">Новое место</h2>
             <form id="element-add-form" class="popup__form" method="get" name="element-add-form">
@@ -58,10 +59,12 @@
         </div>
     </section>
 
-    <section id="popup__large-pic" class="popup popup__large-pic">
-        <div class="popup__container-pic">
+    <section id="popup__large-pic" class="popup popup__large-pic popup__large-pic-trigger popup__trigger">
+        <div class="popup__container-pic popup__large-pic-trigger popup__trigger">
             <button class="button popup__pic-toggle" type="button">
-              <img id="popup__large-pic-close" class='popup__close-button popup__large-pic-close-button' src="<%=require('./images/Close.svg')%>"
+              <img id="popup__large-pic-close"
+                   class='popup__close-button popup__large-pic-close-button popup__large-pic-trigger popup__trigger'
+                   src="<%=require('./images/Close.svg')%>"
                     alt="Закрыть"></button>
             <img src="" alt="" class="popup__pic">
             <h2 class="popup__pic-heading"></h2>
@@ -79,23 +82,22 @@
             <div class="profile__info">
                 <div class="profile__edit">
                     <h1 class="profile__info-name">Жак-Ив Кусто</h1>
-                    <button id="profile__button-edit"  type="button" class="button profile__button-edit"></button>
+                    <button id="profile__button-edit"  type="button"
+                            class="popup__edit-profile-trigger popup__trigger button profile__button-edit"></button>
                 </div>
                 <p class="profile__info-details">Исследователь океана</p>
             </div>
-            <button id="profile__button-add" type="button" class="button profile__button-add"></button>
+            <button id="profile__button-add" type="button"
+                    class="popup__add-element-trigger popup__trigger button profile__button-add"></button>
         </section>
         <!--конец профиля, следующая секция-->
 
         <section class="elements">
             <ul class="elements__list">
-                
+
             </ul>
         </section>
         <!--Конец секции elements-->
-
-
-
     </main>
 
     <footer class="footer">

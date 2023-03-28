@@ -1,4 +1,4 @@
-import {popup, definePopup} from "./modal";
+import {definePopupTrigger} from "./modal";
 
 //добавляем массив карточек
 const initialCards = [
@@ -31,13 +31,11 @@ const initialCards = [
 
 const popupLargePic = document.querySelector('.popup__large-pic');
 const popupAddElement = document.querySelector('.popup__add-element');
-const addButton = document.querySelector('.profile__button-add');
 const cardsList = document.querySelector('.elements__list');
 const cardTemplate = document.querySelector('.element__template');
 const newElementForm = document.querySelector('#element-add-form');
 
-//ниже - добавление новой карточки
-//
+// ниже - добавление новой карточки
 function createCard(list, element) {
   const cardElement = cardTemplate.content.cloneNode(true);
   const elementPic = cardElement.querySelector('.element__image');
@@ -46,22 +44,18 @@ function createCard(list, element) {
   elementPic.src = element.link;
   elementPic.id = "card-element-" + index;
   elementPic.alt = element.name;
-  elementPic.addEventListener('click', (e) => lightBox(e, popupLargePic, element.link, element.name));
   cardElement.querySelector('.element__header').textContent = element.name;
   cardElement.querySelector('.element__like').addEventListener('click', function (evt) {
     evt.target.classList.toggle('element__like_active');
   });
   cardElement.querySelector('.element__trash').addEventListener('click', (evt) => evt.target.closest('.element').remove());
+  elementPic.addEventListener('mousedown', (e) => lightBox(e, popupLargePic, element.link, element.name));
+  definePopupTrigger(popupLargePic, elementPic, 'mousedown');
   return cardElement;
 }
 
 function addNewElement(element) {
-  
-  //вот эту хуйню ниже переписать - вместо ParentNode впихнуть closest
-  //cardElement.querySelector('.element__trash').addEventListener('click', (evt) => evt.target.parentNode.remove());
-  
   cardsList.insertBefore(createCard(cardsList, element), cardsList.firstChild);
-  //
 }
 
 newElementForm.addEventListener('submit', function (evt) {
@@ -75,17 +69,16 @@ newElementForm.addEventListener('submit', function (evt) {
   evt.submitter.disabled = true;
 });
 
+definePopupTrigger(popupAddElement, newElementForm, 'submit');
+
 function lightBox(event, container, imageUrl, caption) {
   container.querySelector('.popup__pic').src = imageUrl;
   container.querySelector('.popup__pic-heading').textContent = caption;
-  popup(event, event.target, container);
 }
 
 
 const initCards = function() {
   initialCards.reverse().forEach((element) => addNewElement(element));
-  definePopup(popupLargePic);
-  definePopup(popupAddElement, addButton);
 }
 
 export {initCards}
