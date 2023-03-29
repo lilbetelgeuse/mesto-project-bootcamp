@@ -10,6 +10,13 @@
     border: none;
     cursor: pointer;
 }
+.element__like-container {
+  flex-direction: column;
+  display: flex;
+  text-align: center;
+  font-size: 13px;
+  line-height: 15px;
+}
 
 /*.element__like:hover {
     opacity: 0.5;

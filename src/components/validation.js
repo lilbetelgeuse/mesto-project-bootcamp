@@ -1,3 +1,5 @@
+import {getAllForms} from "./utils";
+
 const hasInvalidInput = (inputList) => {
   // проходим по этому массиву методом some
   return inputList.some((inputElement) => {
@@ -54,7 +56,7 @@ const setEventListeners = (config, formElement) => {
   const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
 
   const buttonElement = formElement.querySelector('.popup__button');
- 
+
   toggleButtonState(config, inputList, buttonElement);
 
   // Обойдём все элементы полученной коллекции
@@ -72,7 +74,7 @@ const setEventListeners = (config, formElement) => {
 const enableValidation = (config) => {
   // Найдём все формы с указанным классом в DOM,
   // сделаем из них массив методом Array.from
-  const formList = Array.from(document.querySelectorAll(config.formSelector));
+  const formList = getAllForms(config);
 
   // Переберём полученную коллекцию
   formList.forEach((formElement) => {

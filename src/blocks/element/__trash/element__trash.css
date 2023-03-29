@@ -5,9 +5,12 @@
     height: 19px;
     width: 19px;
     background-color: transparent;
-    background-image: url(../../../images/Trash.svg);
     background-size: contain;
     background-repeat: no-repeat;
     border: none;
     z-index: 1;
+}
+
+.element__trash-visible {
+  background-image: url(../../../images/Trash.svg);
 }

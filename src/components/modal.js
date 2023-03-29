@@ -1,15 +1,9 @@
 const all_popups = Array.from(document.querySelectorAll('.popup'));
 
 /**
- * 1. Единая функция для обработки попапов - открывает закрытые, закрывает открытые
- *
- * 2. https://www.macmillandictionary.com/dictionary/british/pop-up_1
- * "Pop up" (phrasal verb, intransitive)
- * DEFINITIONS:
- *     to appear very quickly or suddenly
- *     "The daffodils and tulips are popping up everywhere."
+ * Единая функция для обработки попапов - открывает закрытые, закрывает открытые
  */
-function popup(element) {
+function togglePopup(element) {
   element.classList.toggle('popup_opened');
   if (element.classList.contains('popup_opened')) {
     document.addEventListener('keydown', handleKeyDownEvent)
@@ -21,7 +15,7 @@ function popup(element) {
 function handleKeyDownEvent(event) {
   if (event.key === 'Escape') {
     const element = document.querySelector('.popup_opened');
-    popup(element);
+    togglePopup(element);
   }
 }
 
@@ -30,7 +24,7 @@ function handleTriggerEvent(event, element) {
   if (!event.target.classList.contains('popup__trigger')) {
     return false;
   }
-  popup(element);
+  togglePopup(element);
 }
 
 function definePopupTrigger(popupElement, triggerElement, eventType) {
@@ -53,3 +47,4 @@ function initModal() {
 
 export {initModal}
 export {definePopupTrigger}
+export {togglePopup}

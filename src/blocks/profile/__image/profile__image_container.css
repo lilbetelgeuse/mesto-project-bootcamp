@@ -1,0 +1,26 @@
+.profile__image-container {
+  position: relative;
+  width: 127px;
+  height: 127px;
+}
+
+@media screen and (min-width: 320px) {
+  .profile__image-container {
+    align-self: center;
+    justify-self: center;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .profile__image-container {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .profile__image-container {
+    width: 127px;
+    height: 127px;
+  }
+}
