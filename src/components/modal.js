@@ -1,4 +1,3 @@
-const all_popups = Array.from(document.querySelectorAll('.popup'));
 
 /**
  * Единая функция для обработки попапов - открывает закрытые, закрывает открытые

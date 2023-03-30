@@ -11,11 +11,15 @@ const hasInvalidInput = (inputList) => {
   })
 };
 
+const disableButton = (buttonElement) => {
+  buttonElement.disabled = true;
+}
+
 const toggleButtonState = (config, inputList, buttonElement) => {
   // Если есть хотя бы один невалидный инпут
   if (hasInvalidInput(inputList)) {
     // сделай кнопку неактивной
-      buttonElement.disabled = true;
+    disableButton(buttonElement);
   } else {
     // иначе сделай кнопку активной
     buttonElement.disabled = false;
@@ -50,23 +54,39 @@ const isValid = (config, formElement, inputElement) => {
   }
 };
 
+const validateInput = (config, formElement, inputList, inputElement, buttonElement) => {
+  isValid(config, formElement, inputElement);
+  toggleButtonState(config, inputList, buttonElement);
+}
+
+// функция для принудительной ревалидации формы, например, когда данные пришли с сервера и не проходили проверку
+const revalidateForm = (config, formElement) => {
+  // console.log("Form Valid: " + formElement.checkValidity());
+  const buttonElement = formElement.querySelector(config.submitButtonSelector);
+  const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
+  inputList.forEach((inputElement) => {
+    validateInput(config, formElement, inputList, inputElement, buttonElement);
+  });
+  console.log("revalidate");
+}
+
 const setEventListeners = (config, formElement) => {
   // Находим все поля внутри формы,
   // сделаем из них массив методом Array.from
+
   const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
-
-  const buttonElement = formElement.querySelector('.popup__button');
-
+  const buttonElement = formElement.querySelector(config.submitButtonSelector);
   toggleButtonState(config, inputList, buttonElement);
+  formElement.addEventListener('reset', () => {
+    //При сбросе формы всегда делаем кнопку неактивной
+    disableButton(buttonElement);
+  });
 
   // Обойдём все элементы полученной коллекции
   inputList.forEach((inputElement) => {
     // каждому полю добавим обработчик события input
     inputElement.addEventListener('input', () => {
-      // Внутри колбэка вызовем isValid,
-      // передав ей форму и проверяемый элемент
-      isValid(config, formElement, inputElement)
-      toggleButtonState(config, inputList, buttonElement);
+      validateInput(config, formElement, inputList, inputElement, buttonElement);
     });
   });
 };
@@ -86,3 +106,4 @@ const enableValidation = (config) => {
 
 
 export {enableValidation};
+export {revalidateForm};

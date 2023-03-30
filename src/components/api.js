@@ -6,7 +6,7 @@ const config = {
   }
 }
 
-const api_call = (api, method = 'GET', body = null, extraHeaders = {}) => {
+const callApiMethod = (api, method = 'GET', body = null, extraHeaders = {}) => {
   if (!api.startsWith('/')) {
     api = `/${api}`;
   }
@@ -19,40 +19,38 @@ const api_call = (api, method = 'GET', body = null, extraHeaders = {}) => {
       return res.json();
     }
     return Promise.reject(`Что-то пошло не так: ${res.status} ${res.body}`);
-  }).catch((err) => {
-    console.log(err);
   });
 }
 
 const getProfile = () => {
-  return api_call(`/users/me`);
+  return callApiMethod(`/users/me`);
 }
 
 const updateProfile = (profile) => {
-  return api_call(`/users/me`, "PATCH", JSON.stringify(profile));
+  return callApiMethod(`/users/me`, "PATCH", JSON.stringify(profile));
 }
 
 const updateAvatar = (avatar) => {
-  return api_call(`/users/me/avatar`, "PATCH", JSON.stringify(avatar));
+  return callApiMethod(`/users/me/avatar`, "PATCH", JSON.stringify(avatar));
 }
 
 const getCards = () => {
-  return api_call(`/cards`);
+  return callApiMethod(`/cards`);
 }
 const createCard = (card) => {
-  return api_call(`/cards`, "POST", JSON.stringify(card));
+  return callApiMethod(`/cards`, "POST", JSON.stringify(card));
 }
 
 const deleteCard = (cardId) => {
-  return api_call(`/cards/${cardId}`, "DELETE");
+  return callApiMethod(`/cards/${cardId}`, "DELETE");
 }
 
 const likeCard = (cardId) => {
-  return api_call(`/cards/likes/${cardId}`, "PUT");
+  return callApiMethod(`/cards/likes/${cardId}`, "PUT");
 }
 
 const unlikeCard = (cardId) => {
-  return api_call(`/cards/likes/${cardId}`, "DELETE");
+  return callApiMethod(`/cards/likes/${cardId}`, "DELETE");
 }
 
 export {getProfile}
